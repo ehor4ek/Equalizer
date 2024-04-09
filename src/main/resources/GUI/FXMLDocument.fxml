@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="480" prefWidth="800"
+  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
+  fx:controller="GUI.FXMLDocumentController">
+    <children>
+        <Label layoutX="10" layoutY="10" text="Выберете файл .wav: " textFill="#000000" />
+        <Button fx:id="button_select" layoutX="10.0" layoutY="35.0" onAction="#open" prefHeight="40.0" prefWidth="90.0" text="Выбрать"/>
+        <Button fx:id="buttonClose" layoutX="140.0" layoutY="35.0" maxWidth="200" onAction="#clickClose" prefHeight="40.0" prefWidth="90.0" text="Закрыть"/>
+
+        <Label layoutX="5.0" layoutY="90.0" text="Эквалайзер " textFill="#fefefe" style="-fx-font-size: 18px;"/>
+        <HBox layoutX="5.0" layoutY="130.0" prefHeight="40" prefWidth="720">
+            <children>
+                <Label prefWidth="160" text="0-100 Hz" textFill="#fefefe"/>
+                <Label prefWidth="160" text="100-742 Hz" textFill="#fefefe"/>
+                <Label prefWidth="160" text="742-2025 Hz" textFill="#fefefe"/>
+                <Label prefWidth="160" text="2025-4591 Hz" textFill="#fefefe"/>
+                <Label prefWidth="160" text="4591-9724 Hz" textFill="#fefefe"/>
+                <Label prefWidth="160" text="9724-20000 Hz" textFill="#fefefe"/>
+            </children>
+        </HBox>
+        <HBox layoutX="5.0" layoutY="150.0" prefHeight="100" prefWidth="1024">
+            <children>
+                <Slider fx:id="Slider0" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
+                  showTickLabels="true" showTickMarks="true"/>
+                <Label prefWidth="60" text="" textFill="#fefefe"/>
+                <Slider fx:id="Slider1" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
+                  showTickLabels="true" showTickMarks="true"/>
+                <Label prefWidth="60" text="" textFill="#fefefe"/>
+                <Slider fx:id="Slider2" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
+                  showTickLabels="true" showTickMarks="true"/>
+                <Label prefWidth="60" text="" textFill="#fefefe"/>
+                <Slider fx:id="Slider3" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
+                  showTickLabels="true" showTickMarks="true"/>
+                <Label prefWidth="60" text="" textFill="#fefefe"/>
+                <Slider fx:id="Slider4" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
+                  showTickLabels="true" showTickMarks="true"/>
+                <Label prefWidth="60" text="" textFill="#fefefe"/>
+                <Slider fx:id="Slider5" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
+                  showTickLabels="true" showTickMarks="true"/>
+            </children>
+        </HBox>
+        <HBox layoutX="5.0" layoutY="200.0" prefHeight="50" prefWidth="720">
+            <children>
+                <Label fx:id="Label0" prefWidth="120" textFill="WHITE"/>
+                <Label fx:id="Label1" prefWidth="120" textFill="WHITE"/>
+                <Label fx:id="Label2" prefWidth="120" textFill="WHITE"/>
+                <Label fx:id="Label3" prefWidth="120" textFill="WHITE"/>
+                <Label fx:id="Label4" prefWidth="120" textFill="WHITE"/>
+                <Label fx:id="Label5" prefWidth="120" textFill="WHITE"/>
+            </children>
+        </HBox>
+
+        <Label layoutX="10" layoutY="330" text="Панель управления" textFill="#fefefe"/>
+        <Button fx:id="button_play" layoutX="10" layoutY="350.0" onAction="#play" prefHeight="40.0" prefWidth="60.0" />
+        <Button fx:id="button_pause" layoutX="80" layoutY="350.0" onAction="#pause" prefHeight="40.0" prefWidth="60.0" />
+        <Button fx:id="button_stop" layoutX="150" layoutY="350.0" onAction="#stop" prefHeight="40.0" prefWidth="60.0" />
+
+        <Label layoutX="10" layoutY="270" text="Общая громкость " textFill="#fefefe"/>
+        <Slider fx:id="soundSlider" layoutX="10" layoutY="290" max="2" min="0" orientation="HORIZONTAL"
+          prefHeight="20.0" prefWidth="180.0" rotate="0" value="1">
+        </Slider>
+
+        <Label layoutX="320" layoutY="270" text="Панель эффектов" textFill="#fefefe"/>
+        <CheckBox layoutX="320.0" layoutY="300" onAction="#ClippingBox" text="Echo" textFill="#fefefe"/>
+        <CheckBox layoutX="320.0" layoutY="340" onAction="#DelayBox" text="Overdrive" textFill="#fefefe"/>
+        <CheckBox layoutX="320.0" layoutY="380" onAction="#IirBox" text="Change filter" textFill="#fefefe"/>
+    </children>
+</AnchorPane>
