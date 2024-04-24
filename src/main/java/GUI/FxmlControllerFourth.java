@@ -9,15 +9,15 @@ import javafx.scene.control.Slider;
 import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.*;
 import javafx.stage.Stage;
-import player.AudioPlayer;
+import player.AudioPlayerFourth;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class FXMLDocumentController implements Initializable {
+public class FxmlControllerFourth implements Initializable {
 
-    private AudioPlayer audioPlayer;
+    private AudioPlayerFourth audioPlayer;
     private Thread playThread;
     @FXML
     private Slider Slider0, Slider1, Slider2, Slider3, Slider4, Slider5, soundSlider;
@@ -41,7 +41,7 @@ public class FXMLDocumentController implements Initializable {
 
         if (selectedFile == null) return;
 
-        this.audioPlayer = new AudioPlayer(selectedFile);
+        this.audioPlayer = new AudioPlayerFourth(selectedFile);
         playThread = new Thread(() -> {
             System.out.println("PLAY");
             this.resetSliders();
@@ -92,43 +92,20 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void DelayBox() {
-        System.out.println("Delay on/off");
-        audioPlayer.setDelayEnabled(!audioPlayer.isDelayEnabled());
+        System.out.println("Delay");
+
     }
 
     @FXML
     private void ClippingBox() {
-        System.out.println("Clipping on/off");
-        audioPlayer.setClippingEnabled(!audioPlayer.isClippingEnabled());
+        System.out.println("Envelope");
+
     }
 
     @FXML
     private void IirBox() {
         System.out.println("Change Filter");
-        audioPlayer.setIirEnabled(!audioPlayer.isIirEnabled());
-        resetSlidersToDefault(); // Сброс слайдеров к начальным значениям
-    }
 
-    private void resetSlidersToDefault() {
-        Platform.runLater(() -> {
-            Slider0.setValue(1);
-            Slider1.setValue(1);
-            Slider2.setValue(1);
-            Slider3.setValue(1);
-            Slider4.setValue(1);
-            Slider5.setValue(1);
-            updateFilters(); // Обновить значения фильтров
-        });
-    }
-
-    private void updateFilters() {
-        // Обновление усиления для всех фильтров в соответствии со значениями слайдеров
-        audioPlayer.getEqualizer().getFilter(0).setGain(Slider0.getValue());
-        audioPlayer.getEqualizer().getFilter(1).setGain(Slider1.getValue());
-        audioPlayer.getEqualizer().getFilter(2).setGain(Slider2.getValue());
-        audioPlayer.getEqualizer().getFilter(3).setGain(Slider3.getValue());
-        audioPlayer.getEqualizer().getFilter(4).setGain(Slider4.getValue());
-        audioPlayer.getEqualizer().getFilter(5).setGain(Slider5.getValue());
     }
 
     private void resetSliders() {
@@ -153,61 +130,37 @@ public class FXMLDocumentController implements Initializable {
         Slider0.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label0.setText(str);
-            if (!AudioPlayer.isIirEnabled) {
-                audioPlayer.getEqualizer().getFilter(0).setGain(newValue.doubleValue());
-            } else {
-                audioPlayer.getEqualizer().getFilterIir(0).setGain(newValue.doubleValue());
-            }
+            audioPlayer.getEqualizer().getFilter(0).setGain(newValue.doubleValue());
         });
 
         Slider1.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label1.setText(str);
-            if (!AudioPlayer.isIirEnabled) {
-                audioPlayer.getEqualizer().getFilter(1).setGain(newValue.doubleValue());
-            } else {
-                audioPlayer.getEqualizer().getFilterIir(1).setGain(newValue.doubleValue());
-            }
+            audioPlayer.getEqualizer().getFilter(1).setGain(newValue.doubleValue());
         });
 
         Slider2.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label2.setText(str);
-            if (!AudioPlayer.isIirEnabled) {
-                audioPlayer.getEqualizer().getFilter(2).setGain(newValue.doubleValue());
-            } else {
-                audioPlayer.getEqualizer().getFilterIir(2).setGain(newValue.doubleValue());
-            }
+            audioPlayer.getEqualizer().getFilter(2).setGain(newValue.doubleValue());
         });
 
         Slider3.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label3.setText(str);
-            if (!AudioPlayer.isIirEnabled) {
-                audioPlayer.getEqualizer().getFilter(3).setGain(newValue.doubleValue());
-            } else {
-                audioPlayer.getEqualizer().getFilterIir(3).setGain(newValue.doubleValue());
-            }
+            audioPlayer.getEqualizer().getFilter(3).setGain(newValue.doubleValue());
         });
 
         Slider4.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label4.setText(str);
-            if (!AudioPlayer.isIirEnabled) {
-                audioPlayer.getEqualizer().getFilter(4).setGain(newValue.doubleValue());
-            } else {
-                audioPlayer.getEqualizer().getFilterIir(4).setGain(newValue.doubleValue());
-            }
+            audioPlayer.getEqualizer().getFilter(4).setGain(newValue.doubleValue());
         });
 
         Slider5.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label5.setText(str);
-            if (!AudioPlayer.isIirEnabled) {
-                audioPlayer.getEqualizer().getFilter(5).setGain(newValue.doubleValue());
-            } else {
-                audioPlayer.getEqualizer().getFilterIir(5).setGain(newValue.doubleValue());
-            }
+            audioPlayer.getEqualizer().getFilter(5).setGain(newValue.doubleValue());
         });
     }
 }

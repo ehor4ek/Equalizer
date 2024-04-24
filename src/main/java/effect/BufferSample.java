@@ -9,7 +9,7 @@ public class BufferSample {
     private int indexCurrentElement;
 
     public BufferSample(int sizeArray) {
-        this.sampleDelays = new short[4][2];
+        this.sampleDelays = new short[sizeArray][SAMPLE_SIZE];  // Изменено для соответствия размеру SAMPLE_SIZE
         this.sizeArray = sizeArray;
         this.indexCurrentElement = 0;
     }

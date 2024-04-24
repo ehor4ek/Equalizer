@@ -1,6 +1,9 @@
 package equalizer;
 
-public final class FilterInfo {
+/**
+ * Коэффициенты для БИХ-фильтра
+ */
+public final class FilterInfoIIR {
     public static final int COUNT_OF_BANDS = 6;
     public static final double[] COFFS_NUM_OF_BAND_0 =  {
             0.001613394887242,6.711142062107e-05, 6.85032211386e-05, 6.99114171629e-05,
@@ -255,6 +258,7 @@ public final class FilterInfo {
             7.133609092613e-05, 6.99114171629e-05, 6.85032211386e-05,6.711142062107e-05,
             0.001613394887242
     };
+
     public static final double[] COFFS_NUM_OF_BAND_1 =  {
             -1.625692681024e-06,-2.51123140922e-07,-2.791126928659e-07,-3.090482745105e-07,
             -3.409822269378e-07,-3.749636643603e-07,-4.110381391762e-07,-4.49247302817e-07,
@@ -1444,5 +1448,29 @@ public final class FilterInfo {
             -8.431581664058e-07,-4.906916873905e-07,-1.299395389409e-07,6.468158901286e-08,
             5.593303818577e-08,-6.742272920051e-08,-1.681277000401e-07,-1.500266088546e-07,
             -4.203639611996e-08
+    };
+
+    public static final double[] COFFS_DEN_OF_BAND_0 = {
+
+    };
+
+    public static final double[] COFFS_DEN_OF_BAND_1 = {
+
+    };
+
+    public static final double[] COFFS_DEN_OF_BAND_2 = {
+
+    };
+
+    public static final double[] COFFS_DEN_OF_BAND_3 = {
+
+    };
+
+    public static final double[] COFFS_DEN_OF_BAND_4 = {
+
+    };
+
+    public static final double[] COFFS_DEN_OF_BAND_5 = {
+
     };
 }

@@ -2,7 +2,7 @@ package player;
 
 import effect.Clipping;
 import effect.Delay;
-import equalizer.Equalizer;
+import equalizer.EqualizerThirdApp;
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -14,7 +14,7 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.SourceDataLine;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-public class AudioPlayer {
+public class AudioPlayerThird {
 
     private final File currentMusicFile;
     private AudioInputStream audioStream;
@@ -25,57 +25,19 @@ public class AudioPlayer {
     private boolean pauseStatus;
     private boolean stopStatus;
     private double gain;
-    private final Equalizer equalizer;
+    private final EqualizerThirdApp equalizer;
     private final Delay delay;
     private final Clipping clipping;
-    private boolean clippingEnabled = false;
-    private boolean delayEnabled = false;
-    public static boolean isIirEnabled = false;
-
-    public void setIirEnabled(boolean iirEnabled) {
-        isIirEnabled = iirEnabled;
-    }
-
-    public boolean isIirEnabled() {
-        return isIirEnabled;
-    }
 
 
-    //Clipping amplitude
-    public static final short MAX_AMPLITUDE = 50;
-
-
-    public AudioPlayer(File musicFile) {
+    public AudioPlayerThird(File musicFile) {
         this.currentMusicFile = musicFile;
-        this.equalizer = new Equalizer();
+        this.equalizer = new EqualizerThirdApp();
         this.gain = 1.0;
         this.delay = new Delay();
         this.clipping = new Clipping();
     }
 
-    public Delay getDelay() {
-        return delay;
-    }
-
-    public Clipping getClipping() {
-        return clipping;
-    }
-
-    public boolean isClippingEnabled() {
-        return clippingEnabled;
-    }
-
-    public void setClippingEnabled(boolean clippingEnabled) {
-        this.clippingEnabled = clippingEnabled;
-    }
-
-    public boolean isDelayEnabled() {
-        return delayEnabled;
-    }
-
-    public void setDelayEnabled(boolean delayEnabled) {
-        this.delayEnabled = delayEnabled;
-    }
 
     public void play() {
         try {
@@ -102,29 +64,17 @@ public class AudioPlayer {
                 this.equalizer.equalization();
                 this.bufferShort = equalizer.getOutputSignal();
 
-                // Применение эффекта задержки
-                if (delayEnabled) {
-                    delay.setInputAudioStream(this.bufferShort);  // Устанавливаем входной поток для Delay
-                    this.bufferShort = delay.createEffect();
-                }
-
-
-                // Применение эффекта клиппинга
-                if (clippingEnabled) { // clippingEnabled проверяет состояние соответствующего чекбокса
-                    this.bufferShort = clipping.applyClipping(this.bufferShort, MAX_AMPLITUDE);
-                }
-
                 this.ShortArrayToByteArray();
                 this.sourceDataLine.write(this.bufferBytes, 0, this.bufferBytes.length);
             }
             this.sourceDataLine.drain();
             this.sourceDataLine.close();
         } catch (IOException | LineUnavailableException | UnsupportedAudioFileException |
-                 ExecutionException | InterruptedException e) {
+                 ExecutionException |
+                 InterruptedException e) {
             throw new RuntimeException(e);
         }
     }
-
 
     private void pause() {
         if (this.pauseStatus) {
@@ -173,10 +123,10 @@ public class AudioPlayer {
     }
 
     private void ShortArrayToByteArray() {
-        for (int i = 0, j = 0; i < this.bufferShort.length && j < this.bufferBytes.length; i++, j += 2) {
-            ByteBuffer buffer = ByteBuffer.allocate(2).order(java.nio.ByteOrder.LITTLE_ENDIAN).putShort(bufferShort[i]);
-            this.bufferBytes[j] = buffer.array()[0];
-            this.bufferBytes[j + 1] = buffer.array()[1];
+        for (int i = 0, j = 0; i < this.bufferShort.length && j < this.bufferBytes.length;
+                i++, j += 2) {
+            this.bufferBytes[j] = (byte) (this.bufferShort[i]);
+            this.bufferBytes[j + 1] = (byte) (this.bufferShort[i] >>> 8);
         }
     }
 
@@ -184,7 +134,7 @@ public class AudioPlayer {
         this.gain = gain;
     }
 
-    public Equalizer getEqualizer() {
+    public EqualizerThirdApp getEqualizer() {
         return this.equalizer;
     }
 

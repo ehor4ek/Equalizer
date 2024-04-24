@@ -73,7 +73,7 @@ public class AudioPlayerSecond {
     private volatile boolean isStopped;
     private Thread playThread;
     public static final int BUFF_SIZE_BYTES = 4096;
-    public static final int BUFF_SIZE = 1000;
+    public static final int BUFF_SIZE = 4096;
     private final byte[] bufferBytes = new byte[BUFF_SIZE_BYTES];
     private CircularBuffer circularBuffer; // Добавляем поле для кольцевого буфера
 
