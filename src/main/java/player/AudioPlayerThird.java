@@ -3,6 +3,7 @@ package player;
 import effect.Clipping;
 import effect.Delay;
 import equalizer.EqualizerThirdApp;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -124,7 +125,7 @@ public class AudioPlayerThird {
 
     private void ShortArrayToByteArray() {
         for (int i = 0, j = 0; i < this.bufferShort.length && j < this.bufferBytes.length;
-                i++, j += 2) {
+             i++, j += 2) {
             this.bufferBytes[j] = (byte) (this.bufferShort[i]);
             this.bufferBytes[j + 1] = (byte) (this.bufferShort[i] >>> 8);
         }

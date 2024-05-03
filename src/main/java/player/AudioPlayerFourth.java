@@ -2,7 +2,8 @@ package player;
 
 import effect.Clipping;
 import effect.Delay;
-import equalizer.EqualizerThirdApp;
+import equalizer.EqualizerFourthApp;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -25,14 +26,14 @@ public class AudioPlayerFourth {
     private boolean pauseStatus;
     private boolean stopStatus;
     private double gain;
-    private final EqualizerThirdApp equalizer;
+    private final EqualizerFourthApp equalizer;
     private final Delay delay;
     private final Clipping clipping;
 
 
     public AudioPlayerFourth(File musicFile) {
         this.currentMusicFile = musicFile;
-        this.equalizer = new EqualizerThirdApp();
+        this.equalizer = new EqualizerFourthApp();
         this.gain = 1.0;
         this.delay = new Delay();
         this.clipping = new Clipping();
@@ -124,7 +125,7 @@ public class AudioPlayerFourth {
 
     private void ShortArrayToByteArray() {
         for (int i = 0, j = 0; i < this.bufferShort.length && j < this.bufferBytes.length;
-                i++, j += 2) {
+             i++, j += 2) {
             this.bufferBytes[j] = (byte) (this.bufferShort[i]);
             this.bufferBytes[j + 1] = (byte) (this.bufferShort[i] >>> 8);
         }
@@ -134,7 +135,7 @@ public class AudioPlayerFourth {
         this.gain = gain;
     }
 
-    public EqualizerThirdApp getEqualizer() {
+    public EqualizerFourthApp getEqualizer() {
         return this.equalizer;
     }
 

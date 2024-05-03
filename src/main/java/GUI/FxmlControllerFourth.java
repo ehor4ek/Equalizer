@@ -20,14 +20,14 @@ public class FxmlControllerFourth implements Initializable {
     private AudioPlayerFourth audioPlayer;
     private Thread playThread;
     @FXML
-    private Slider Slider0, Slider1, Slider2, Slider3, Slider4, Slider5, soundSlider;
+    private Slider Slider5;
     @FXML
-    private Label Label0, Label1, Label2, Label3, Label4, Label5;
+    private Label Label5;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.listenSliders();
-        this.gainFromSlider();
+//        this.gainFromSlider();
     }
 
     @FXML
@@ -90,73 +90,14 @@ public class FxmlControllerFourth implements Initializable {
         System.exit(0);
     }
 
-    @FXML
-    private void DelayBox() {
-        System.out.println("Delay");
-
-    }
-
-    @FXML
-    private void ClippingBox() {
-        System.out.println("Envelope");
-
-    }
-
-    @FXML
-    private void IirBox() {
-        System.out.println("Change Filter");
-
-    }
 
     private void resetSliders() {
         Platform.runLater(() -> {
-            Slider0.setValue(1);
-            Slider1.setValue(1);
-            Slider2.setValue(1);
-            Slider3.setValue(1);
-            Slider4.setValue(1);
             Slider5.setValue(1);
-            soundSlider.setValue(1);
-        });
-    }
-
-    private void gainFromSlider() {
-        soundSlider.valueProperty().addListener((ObservableValue<? extends Number> observable, Number oldValue, Number newValue) -> {
-            audioPlayer.setGain(newValue.doubleValue());
         });
     }
 
     private void listenSliders() {
-        Slider0.valueProperty().addListener((observable, oldValue, newValue) -> {
-            String str = String.format("%.3f", (newValue.doubleValue()));
-            Label0.setText(str);
-            audioPlayer.getEqualizer().getFilter(0).setGain(newValue.doubleValue());
-        });
-
-        Slider1.valueProperty().addListener((observable, oldValue, newValue) -> {
-            String str = String.format("%.3f", (newValue.doubleValue()));
-            Label1.setText(str);
-            audioPlayer.getEqualizer().getFilter(1).setGain(newValue.doubleValue());
-        });
-
-        Slider2.valueProperty().addListener((observable, oldValue, newValue) -> {
-            String str = String.format("%.3f", (newValue.doubleValue()));
-            Label2.setText(str);
-            audioPlayer.getEqualizer().getFilter(2).setGain(newValue.doubleValue());
-        });
-
-        Slider3.valueProperty().addListener((observable, oldValue, newValue) -> {
-            String str = String.format("%.3f", (newValue.doubleValue()));
-            Label3.setText(str);
-            audioPlayer.getEqualizer().getFilter(3).setGain(newValue.doubleValue());
-        });
-
-        Slider4.valueProperty().addListener((observable, oldValue, newValue) -> {
-            String str = String.format("%.3f", (newValue.doubleValue()));
-            Label4.setText(str);
-            audioPlayer.getEqualizer().getFilter(4).setGain(newValue.doubleValue());
-        });
-
         Slider5.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
             Label5.setText(str);

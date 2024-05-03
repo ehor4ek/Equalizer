@@ -19,7 +19,7 @@ public class FourthApp extends Application {
                 Objects.requireNonNull(getClass().getResource("/GUI/FxmlDocumentFourth.fxml")));
 
         Scene scene = new Scene(root);
-        stage.setTitle("Low pass filter");
+        stage.setTitle("High pass filter");
         stage.setScene(scene);
         scene.getStylesheets().add
                 (EqualizerApp.class.getResource("/GUI/Style.css").toExternalForm());

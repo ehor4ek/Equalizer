@@ -1,11 +1,12 @@
 package equalizer;
+
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class EqualizerThirdApp {
-    private short[]outputSignal;
+    private short[] outputSignal;
     private Filter[] filters;
     private final static char COUNT_OF_THREADS = 4;
     ExecutorService pool;
@@ -24,37 +25,42 @@ public class EqualizerThirdApp {
         this.filters[4].settings(inputSignal, FilterInfo.COFFS_NUM_OF_BAND_4);
         this.filters[5].settings(inputSignal, FilterInfo.COFFS_NUM_OF_BAND_5);
 
+
     }
 
     private void createFilters() {
-        this.filters = new  Filter [FilterInfo.COUNT_OF_BANDS] ;
+        this.filters = new Filter[FilterInfo.COUNT_OF_BANDS];
         for (int i = 0; i < FilterInfo.COUNT_OF_BANDS; i++)
             this.filters[i] = new Filter();
     }
 
-    public void equalization( ) throws InterruptedException, ExecutionException {
+    public void equalization() throws InterruptedException, ExecutionException {
         Future<short[]>[] fs = new Future[FilterInfo.COUNT_OF_BANDS];
-        for(int i = 0; i < FilterInfo.COUNT_OF_BANDS; i++){
+        for (int i = 0; i < FilterInfo.COUNT_OF_BANDS; i++) {
             fs[i] = pool.submit(this.filters[i]);
         }
 
-        for(int i = 0; i < this.outputSignal.length; i++) {
-            this.outputSignal[i] += (short) (fs[0].get()[i] +
-                    fs[1].get()[i] +
-                    fs[2].get()[i] +
-                    fs[3].get()[i] +
-                    fs[4].get()[i] +
-                    fs[5].get()[i]);
+        for (int i = 0; i < this.outputSignal.length; i++) {
+            this.outputSignal[i] += (short) (
+                            fs[0].get()[i] +
+                            fs[1].get()[i] +
+                            fs[2].get()[i] +
+                            fs[3].get()[i] +
+                            fs[4].get()[i] +
+                            fs[5].get()[i]);
         }
     }
+
     public short[] getOutputSignal() {
         return this.outputSignal;
     }
+
     public Filter getFilter(int numberFilter) {
         return this.filters[numberFilter];
     }
+
     public void close() {
-        if(this.pool != null) {
+        if (this.pool != null) {
             this.pool.shutdown();
         }
     }
