@@ -91,16 +91,18 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void DelayBox() {
-        System.out.println("Delay on/off");
-        audioPlayer.setDelayEnabled(!audioPlayer.isDelayEnabled());
+    private void EchoBox() {
+        System.out.println("Echo on/off");
+        audioPlayer.setEchoEnabled(!audioPlayer.isEchoEnabled());
     }
 
     @FXML
-    private void ClippingBox() {
-        System.out.println("Clipping on/off");
-        audioPlayer.setClippingEnabled(!audioPlayer.isClippingEnabled());
+    private void OverdriveBox() {
+        System.out.println("Overdrive on/off");
+        audioPlayer.setOverdriveEnabled(!audioPlayer.isOverdriveEnabled());
     }
+
+
 
     @FXML
     private void IirBox() {

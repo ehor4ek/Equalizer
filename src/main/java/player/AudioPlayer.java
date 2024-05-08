@@ -2,6 +2,8 @@ package player;
 
 import effect.Clipping;
 import effect.Delay;
+import effect.Echo;
+import effect.Overdrive;
 import equalizer.Equalizer;
 import java.io.File;
 import java.io.IOException;
@@ -25,12 +27,17 @@ public class AudioPlayer {
     private boolean pauseStatus;
     private boolean stopStatus;
     private double gain;
+    private final Echo echo;
     private final Equalizer equalizer;
     private final Delay delay;
     private final Clipping clipping;
+    private final Overdrive overdrive;
+    private boolean isOverdrive;
     private boolean clippingEnabled = false;
-    private boolean delayEnabled = false;
+    private boolean overdriveEnabled = false;
+    private boolean echoEnabled = false;
     public static boolean isIirEnabled = false;
+
 
     public void setIirEnabled(boolean iirEnabled) {
         isIirEnabled = iirEnabled;
@@ -49,32 +56,36 @@ public class AudioPlayer {
         this.currentMusicFile = musicFile;
         this.equalizer = new Equalizer();
         this.gain = 1.0;
+        this.echo = new Echo();
         this.delay = new Delay();
         this.clipping = new Clipping();
+        this.isOverdrive = false;
+        this.overdrive = new Overdrive();
     }
 
-    public Delay getDelay() {
-        return delay;
+    private void overdrive(short[] inputSamples) {
+        this.overdrive.setInputSampleStream(inputSamples);
+        this.overdrive.createEffect();
     }
 
-    public Clipping getClipping() {
-        return clipping;
+    public boolean distortionIsActive() {
+        return this.isOverdrive;
     }
 
-    public boolean isClippingEnabled() {
-        return clippingEnabled;
+    public void setOverdriveEnabled(boolean b) {
+        this.overdriveEnabled = b;
     }
 
-    public void setClippingEnabled(boolean clippingEnabled) {
-        this.clippingEnabled = clippingEnabled;
-    }
 
-    public boolean isDelayEnabled() {
-        return delayEnabled;
-    }
+    public Echo getEcho() {return echo;}
 
-    public void setDelayEnabled(boolean delayEnabled) {
-        this.delayEnabled = delayEnabled;
+
+
+    public boolean isOverdriveEnabled() {return overdriveEnabled;}
+    public boolean isEchoEnabled() {return echoEnabled;}
+
+    public void setEchoEnabled(boolean echoEnabled) {
+        this.echoEnabled = echoEnabled;
     }
 
     public void play() {
@@ -102,17 +113,17 @@ public class AudioPlayer {
                 this.equalizer.equalization();
                 this.bufferShort = equalizer.getOutputSignal();
 
-                // Применение эффекта задержки
-                if (delayEnabled) {
-                    delay.setInputAudioStream(this.bufferShort);  // Устанавливаем входной поток для Delay
-                    this.bufferShort = delay.createEffect();
+
+                if (overdriveEnabled) {
+                    overdrive.setInputSampleStream(this.bufferShort);
+                    this.overdrive.createEffect();
                 }
 
-
-                // Применение эффекта клиппинга
-                if (clippingEnabled) { // clippingEnabled проверяет состояние соответствующего чекбокса
-                    this.bufferShort = clipping.applyClipping(this.bufferShort, MAX_AMPLITUDE);
+                if (echoEnabled) {
+                    echo.setInputSampleStream(this.bufferShort);
+                    this.bufferShort = echo.createEffect();
                 }
+
 
                 this.ShortArrayToByteArray();
                 this.sourceDataLine.write(this.bufferBytes, 0, this.bufferBytes.length);
