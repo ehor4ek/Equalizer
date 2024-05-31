@@ -1,45 +1,40 @@
 .root {
-    -fx-background-color: #5F937C; /* Голубой фон */
-    -fx-text-fill:#37574C;
+     -fx-background-color: #494D5F;
+     -fx-text-fill:#E5EAF5;
 }
-
 .button {
-    -fx-background-color: #DED3C4; /* Темно-синие кнопки */
-    -fx-text-fill:#37574C;
-    -fx-font-weight: bold; /* Жирный текст */
+ -fx-background-color: #8458B3;
+ -fx-text-fill:#E5EAF5;
 }
-
 .label{
-    -fx-text-fill:#DED3C4;
-    -fx-font-weight: bold; /* Жирный текст */
-    -fx-font-style:italic;
-    -fx-font-size:14px;
+-fx-text-fill:#E5EAF5;
 }
 
-.slider {
-    -fx-background-color: #DED3C4; /* Темно-синий фон для слайдеров */
-    -fx-background-insets: 0 0 -1 0, 0, 1;
-    -fx-background-radius: 12px;
-
+.slider{
+-fx-background-color: #8458B3;
+ -fx-background-insets: 0 0 -1 0, 0, 1;
+    -fx-background-radius: 0px;
+    -fx-margin:7px;
+    -fx-padding: 0.25em;
 }
 
-    #button_play{
+#button_play{
  -fx-background-image: url("../images/play.png");
-    -fx-background-size: 35 35;
+    -fx-background-size: 25 25;
     -fx-background-repeat: no-repeat;
     -fx-background-position:center center;
 }
 
 #button_pause{
  -fx-background-image: url("../images/pause.png");
-    -fx-background-size: 35 35;
+    -fx-background-size: 25 25;
     -fx-background-repeat: no-repeat;
     -fx-background-position:center center;
 }
 
 #button_stop{
  -fx-background-image: url("../images/reset.png");
-    -fx-background-size: 35 35;
+    -fx-background-size: 25 25;
     -fx-background-repeat: no-repeat;
     -fx-background-position:center center;
 }
@@ -50,9 +45,86 @@
 }
 
 .check-box{
--fx-text-fill:#2d493f;
+-fx-text-fill:#E5EAF5;
 -fx-font-style:italic;
 -fx-font-size:16px;
 -fx-font-weight:bold;
 }
+
+/*.root {*/
+/*    -fx-background-color: #191970;*/
+/*    -fx-text-fill:#D5E4F2;*/
+/*}*/
+/*.button {*/
+/*    -fx-background-color: #FFFFFF;*/
+/*    -fx-text-fill:#000000;*/
+/*}*/
+/*.label{*/
+/*    -fx-text-fill:#FFFFFF;*/
+/*}*/
+
+/*.slider{*/
+/*    -fx-background-color:  transparent;*/
+/*    -fx-background-radius: 15px;*/
+/*    !*-fx-background-insets: 0 0 -1 0, 0, 1;*!*/
+/*    -fx-margin:7px;*/
+/*    -fx-padding: 0.25em; !* 3 *!*/
+/*}*/
+#button_select{
+    -fx-background-image: url("../images/open.png");
+    -fx-background-size: 23 23;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center center;
+    -fx-background-color:  transparent;
+}
+#button_play{
+    -fx-background-size: 23 23;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center center;
+    -fx-background-color:  transparent;
+}
+
+#button_pause {
+    -fx-background-size: 23 23;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-background-color:  transparent;
+}
+
+#button_stop{
+    -fx-background-size: 23 23;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-color:  transparent;
+}
+
+#buttonClose{
+    -fx-background-image: url("../images/close.png");
+    -fx-background-color:  transparent;
+    -fx-background-size: 50 49;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+/*#buttonClose:hover {*/
+/*    -fx-cursor: hand;*/
+/*}*/
+
+/*.check-box{*/
+/*    -fx-text-fill:#FFFFFF;*/
+/*    -fx-font-size:14px;*/
+/*}*/
+
+
+/*.chart-plot-background {*/
+/*    -fx-background-color:  #FFFFFF;*/
+/*}*/
+
+/*.default-color0.chart-series-line { -fx-stroke: #000000; }*/
+
+/*.regulars Slider {*/
+/*    -fx-fill-width: 50%;*/
+/*    -fx-fit-to-width: 50%;*/
+/*}*/
+
 

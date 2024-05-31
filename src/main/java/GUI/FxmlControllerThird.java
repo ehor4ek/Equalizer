@@ -21,8 +21,8 @@ public class FxmlControllerThird implements Initializable {
     private Thread playThread;
     @FXML
     private Slider Slider0;
-    @FXML
-    private Label Label0;
+//    @FXML
+//    private Label Label0;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -99,7 +99,7 @@ public class FxmlControllerThird implements Initializable {
     private void listenSliders() {
         Slider0.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label0.setText(str);
+//            Label0.setText(str);
             audioPlayer.getEqualizer().getFilter(0).setGain(newValue.doubleValue());
         });
 

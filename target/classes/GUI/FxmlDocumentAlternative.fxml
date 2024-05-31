@@ -1,19 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="480" prefWidth="800"
-  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="GUI.FxmlControllerAlternative">
-  <children>
-    <Label layoutX="10" layoutY="10" text="Выберете файл .wav" textFill="#fcfcfc"/>
-    <Button fx:id="button_select" layoutX="10" layoutY="40" onAction="#open" prefHeight="40" prefWidth="140" text="Открыть"/>
+<AnchorPane id="AnchorPane" prefHeight="900" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FxmlControllerAlternative">
+    <children>
+      <HBox layoutX="1512.0" layoutY="24.0" prefHeight="0.0" prefWidth="14.0" AnchorPane.bottomAnchor="850.4" AnchorPane.leftAnchor="1512.0" AnchorPane.rightAnchor="62.4" AnchorPane.topAnchor="24.0" />
+      <VBox layoutX="1014.0" layoutY="220.0">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_select" onAction="#open" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
 
-    <Label layoutX="10" layoutY="90" text="Управление воспроизведением" textFill="#fefefe"/>
-    <Button fx:id="button_play" layoutX="10" layoutY="120" onAction="#play" prefHeight="40" prefWidth="80"/>
-    <Button fx:id="button_pause" layoutX="100" layoutY="120" onAction="#pause" prefHeight="40" prefWidth="80"/>
-    <Button fx:id="button_stop" layoutX="190" layoutY="120" onAction="#stop" prefHeight="40" prefWidth="80"/>
+                    <Label text="Выбрать файл(.wav)" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_play" onAction="#play" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    <Label text="Воспроизвести" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_pause" onAction="#pause" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    <Label text="Остановить" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_stop" onAction="#stop" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    <Label text="Сбросить" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+        <Label layoutX="1057.0" layoutY="544.0" text="Громкость" />
+        <Slider fx:id="soundSlider" layoutX="1014.0" layoutY="482.0" max="0.5" min="0" orientation="VERTICAL" rotate="0" value="0.25">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+        <Button fx:id="buttonClose" layoutX="1375.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="110" minHeight="-Infinity" minWidth="-Infinity" onAction="#clickClose" prefHeight="25.0" prefWidth="25.0" text="">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
 
-    <Button fx:id="buttonClose" layoutX="10" layoutY="170" onAction="#clickClose" prefHeight="40" prefWidth="140" text="Закрыть"/>
-  </children>
+    </children>
 </AnchorPane>

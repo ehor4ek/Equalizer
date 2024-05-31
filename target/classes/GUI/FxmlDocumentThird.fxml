@@ -1,69 +1,222 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="480" prefWidth="800"
-  xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="GUI.FxmlControllerThird">
-  <children>
-    <Label layoutX="1080" layoutY="100" text="Выберете файл .wav " textFill="#fcfcfc"/>
-    <Button fx:id="button_select" layoutX="1080.0" layoutY="150.0" onAction="#open" prefHeight="40.0" prefWidth="70.0" text="Открыть"/>
-    <Button fx:id="buttonClose" layoutX="1080.0" layoutY="200.0" maxWidth="200" onAction="#clickClose" prefHeight="70.0" prefWidth="69.0" text="Закрыть"/>
+<AnchorPane id="AnchorPane" prefHeight="900" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.FXMLDocumentController">
+    <children>
+      <HBox layoutX="1512.0" layoutY="24.0" prefHeight="0.0" prefWidth="14.0" AnchorPane.bottomAnchor="850.4" AnchorPane.leftAnchor="1512.0" AnchorPane.rightAnchor="62.4" AnchorPane.topAnchor="24.0" />
+      <VBox layoutX="1014.0" layoutY="220.0">
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_select" onAction="#open" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
 
-    <Label layoutX="5.0" layoutY="65.0" text="Эквалайзер " textFill="#fefefe"/>
-    <HBox layoutX="5.0" layoutY="90.0" prefHeight="40" prefWidth="720">
-      <children>
-        <Label prefWidth="120" text="0-100 Hz" textFill="#fefefe"/>
-        <Label prefWidth="120" text="100-742 Hz" textFill="#fefefe" visible="false"/>
-        <Label prefWidth="120" text="742-2025 Hz" textFill="#fefefe" visible="false"/>
-        <Label prefWidth="120" text="2025-4591 Hz" textFill="#fefefe" visible="false"/>
-        <Label prefWidth="120" text="4591-9724 Hz" textFill="#fefefe" visible="false"/>
-        <Label prefWidth="120" text="9724-20000 Hz" textFill="#fefefe" visible="false"/>
-      </children>
-    </HBox>
-    <HBox layoutX="5.0" layoutY="120.0" prefHeight="80" prefWidth="720">
-      <children>
-        <Slider fx:id="Slider0" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
-          showTickLabels="true" showTickMarks="true"/>
-        <Label prefWidth="60" text="" textFill="#fefefe"/>
-        <Slider fx:id="Slider1" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
-          showTickLabels="true" showTickMarks="true" visible="false"/>
-        <Label prefWidth="60" text="" textFill="#fefefe" visible="false"/>
-        <Slider fx:id="Slider2" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
-          showTickLabels="true" showTickMarks="true" visible="false"/>
-        <Label prefWidth="60" text="" textFill="#fefefe" visible="false"/>
-        <Slider fx:id="Slider3" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
-          showTickLabels="true" showTickMarks="true" visible="false"/>
-        <Label prefWidth="60" text="" textFill="#fefefe" visible="false"/>
-        <Slider fx:id="Slider4" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
-          showTickLabels="true" showTickMarks="true" visible="false"/>
-        <Label prefWidth="60" text="" textFill="#fefefe" visible="false"/>
-        <Slider fx:id="Slider5" max="1" min="0.00025" orientation="VERTICAL" prefWidth="60"
-          showTickLabels="true" showTickMarks="true" visible="false"/>
-      </children>
-    </HBox>
-    <HBox layoutX="5.0" layoutY="200.0" prefHeight="50" prefWidth="720">
-      <children>
-        <Label fx:id="Label0" prefWidth="120" textFill="WHITE"/>
-        <Label fx:id="Label1" prefWidth="120" textFill="WHITE" visible="false"/>
-        <Label fx:id="Label2" prefWidth="120" textFill="WHITE" visible="false"/>
-        <Label fx:id="Label3" prefWidth="120" textFill="WHITE" visible="false"/>
-        <Label fx:id="Label4" prefWidth="120" textFill="WHITE" visible="false"/>
-        <Label fx:id="Label5" prefWidth="120" textFill="WHITE" visible="false"/>
-      </children>
-    </HBox>
+                    <Label text="Выбрать файл(.wav)" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_play" onAction="#play" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    <Label text="Воспроизвести" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_pause" onAction="#pause" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    <Label text="Остановить" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="15.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                    <Button fx:id="button_stop" onAction="#stop" prefHeight="25.0" prefWidth="25.0" text="">
+                     <HBox.margin>
+                        <Insets right="10.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                    <Label text="Сбросить" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+        <Label layoutX="1057.0" layoutY="544.0" text="Громкость" />
+        <Slider fx:id="soundSlider" layoutX="1014.0" layoutY="482.0" max="2" min="0" orientation="VERTICAL" rotate="0" value="1">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Slider>
+      <VBox layoutX="1014.0" layoutY="400.0" AnchorPane.bottomAnchor="450.0">
+         <children>
 
-    <Label layoutX="350" layoutY="250" text="Панель управления" textFill="#fefefe"/>
-    <Button fx:id="button_play" layoutX="350" layoutY="280.0" onAction="#play" prefHeight="40.0" prefWidth="60.0" />
-    <Button fx:id="button_pause" layoutX="420" layoutY="280.0" onAction="#pause" prefHeight="40.0" prefWidth="60.0" />
-    <Button fx:id="button_stop" layoutX="490" layoutY="280.0" onAction="#stop" prefHeight="40.0" prefWidth="60.0" />
+              <Label text="Звуковые эффекты">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </Label>
+              <CheckBox onAction="#OverdriveBox" text="Овердрайв">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </CheckBox>
+              <CheckBox onAction="#EchoBox" text="Эхо">
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </CheckBox>
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" layoutX="114.0" prefHeight="900.0" prefWidth="686.0" AnchorPane.leftAnchor="300.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox alignment="CENTER" prefHeight="748.0" prefWidth="774.0" styleClass="regulars">
+                <children>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <children>
+                         <Slider fx:id="Slider0" max="1" min="0.00025" prefHeight="14.0" prefWidth="500.0"  >
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Slider>
+                         <Label  fx:id="Label0" prefWidth="105.0" text="0-100 Hz">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox visible="false">
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <children>
+                          <Slider fx:id="Slider1" max="1" min="0.00025" prefWidth="500.0"  >
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Slider>
+                         <Label  fx:id="Label1" prefWidth="105.0" text="100-742 Hz" />
+                     </children>
+                  </HBox>
+                  <HBox visible="false">
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <children>
+                          <Slider fx:id="Slider2" max="1" min="0.00025" prefWidth="500.0"  >
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Slider>
+                         <Label  fx:id="Label2" prefWidth="105.0" text="742-2025 Hz" />
+                     </children>
+                  </HBox>
+                  <HBox visible="false">
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <children>
+                          <Slider fx:id="Slider3" max="1" min="0.00025" prefWidth="500.0"  >
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Slider>
+                         <Label  fx:id="Label3" prefWidth="105.0" text="2025-4591 Hz" />
+                     </children>
+                  </HBox>
+                  <HBox visible="false">
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <children>
+                          <Slider fx:id="Slider4" max="1" min="0.00025" prefWidth="500.0"  >
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Slider>
+                         <Label  fx:id="Label4" prefWidth="105.0" text="4591-9724 Hz" />
+                     </children>
+                  </HBox>
+                  <HBox visible="false" prefHeight="13.0" prefWidth="755.0">
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                     <children>
+                          <Slider fx:id="Slider5" max="1" min="0.00025" prefWidth="500.0"  >
+                           <HBox.margin>
+                              <Insets right="30.0" />
+                           </HBox.margin>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Slider>
+                         <Label  fx:id="Label5" prefHeight="87.0" prefWidth="105.0" text="9724-20000 Hz" />
+                     </children>
+                  </HBox>
+                </children>
+            </VBox>
+         </children>
+      </VBox>
+        <Button fx:id="buttonClose" layoutX="1375.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="110" minHeight="-Infinity" minWidth="-Infinity" onAction="#clickClose" prefHeight="25.0" prefWidth="25.0" text="">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
 
-    <Label layoutX="150" layoutY="250" text="Общая громкость " textFill="#fefefe"/>
-    <Slider fx:id="soundSlider" layoutX="150" layoutY="280" max="2" min="0" orientation="HORIZONTAL"
-      prefHeight="20.0" prefWidth="180.0" rotate="0" value="1">
-    </Slider>
-
-    <Label layoutX="650" layoutY="250" text="Панель эффектов" textFill="#fefefe"/>
-  </children>
+    </children>
 </AnchorPane>

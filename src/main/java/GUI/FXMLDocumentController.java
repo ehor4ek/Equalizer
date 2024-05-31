@@ -21,8 +21,8 @@ public class FXMLDocumentController implements Initializable {
     private Thread playThread;
     @FXML
     private Slider Slider0, Slider1, Slider2, Slider3, Slider4, Slider5, soundSlider;
-    @FXML
-    private Label Label0, Label1, Label2, Label3, Label4, Label5;
+//    @FXML
+//    private Label Label0, Label1, Label2, Label3, Label4, Label5;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -154,7 +154,7 @@ public class FXMLDocumentController implements Initializable {
     private void listenSliders() {
         Slider0.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label0.setText(str);
+//            Label0.setText(str);
             if (!AudioPlayer.isIirEnabled) {
                 audioPlayer.getEqualizer().getFilter(0).setGain(newValue.doubleValue());
             } else {
@@ -164,7 +164,7 @@ public class FXMLDocumentController implements Initializable {
 
         Slider1.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label1.setText(str);
+//            Label1.setText(str);
             if (!AudioPlayer.isIirEnabled) {
                 audioPlayer.getEqualizer().getFilter(1).setGain(newValue.doubleValue());
             } else {
@@ -174,7 +174,7 @@ public class FXMLDocumentController implements Initializable {
 
         Slider2.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label2.setText(str);
+//            Label2.setText(str);
             if (!AudioPlayer.isIirEnabled) {
                 audioPlayer.getEqualizer().getFilter(2).setGain(newValue.doubleValue());
             } else {
@@ -184,7 +184,7 @@ public class FXMLDocumentController implements Initializable {
 
         Slider3.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label3.setText(str);
+//            Label3.setText(str);
             if (!AudioPlayer.isIirEnabled) {
                 audioPlayer.getEqualizer().getFilter(3).setGain(newValue.doubleValue());
             } else {
@@ -194,7 +194,7 @@ public class FXMLDocumentController implements Initializable {
 
         Slider4.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label4.setText(str);
+//            Label4.setText(str);
             if (!AudioPlayer.isIirEnabled) {
                 audioPlayer.getEqualizer().getFilter(4).setGain(newValue.doubleValue());
             } else {
@@ -204,7 +204,7 @@ public class FXMLDocumentController implements Initializable {
 
         Slider5.valueProperty().addListener((observable, oldValue, newValue) -> {
             String str = String.format("%.3f", (newValue.doubleValue()));
-            Label5.setText(str);
+//            Label5.setText(str);
             if (!AudioPlayer.isIirEnabled) {
                 audioPlayer.getEqualizer().getFilter(5).setGain(newValue.doubleValue());
             } else {
